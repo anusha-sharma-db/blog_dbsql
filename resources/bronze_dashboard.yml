@@ -1,0 +1,6 @@
+resources:
+  dashboards:
+    bronze_dashboard:
+      display_name: "Bronze Total Sales"
+      file_path: ../src/dashboards/blog_total_sales.lvdash.json
+      warehouse_id: ${var.warehouse_id}

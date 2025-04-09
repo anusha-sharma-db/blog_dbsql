@@ -1,0 +1,18 @@
+resources:
+  jobs:
+    dbsql_medallion_wf:
+      name: dbsql_medallion_wf
+      tasks:
+        - task_key: bronze_task
+          sql_task:
+            parameters:
+              catalog_name: anusha_blog_dev
+              schema_name: sales
+              container: ex-loc-container
+              storage_account: anushaapjsa
+            file:
+              path: ../src/queries/bronze_sales.sql
+              source: WORKSPACE
+            warehouse_id: ${var.warehouse_id}
+      queue:
+        enabled: true

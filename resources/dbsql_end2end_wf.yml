@@ -1,0 +1,17 @@
+resources:
+  jobs:
+    dbsql_end2end_wf:
+      name: dbsql_end2end_wf
+      tasks:
+        - task_key: medallion_task
+          run_job_task:
+            job_id: ${resources.jobs.dbsql_medallion_wf.id}
+        - task_key: bronze_dashboard_task
+          depends_on:
+            - task_key: medallion_task
+          dashboard_task:
+            subscription: {}
+            warehouse_id: 148ccb90800933a1
+            dashboard_id: 01f0107a5e3b12138de5ddc159a94fbf
+      queue:
+        enabled: true

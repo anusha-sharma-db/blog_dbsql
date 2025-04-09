@@ -1,0 +1,222 @@
+{
+  "datasets" : [ {
+    "name" : "02939fe8",
+    "displayName" : "bronze_sales",
+    "query" : "SELECT * FROM anusha_blog_dev.sales.bronze_sales"
+  } ],
+  "pages" : [ {
+    "name" : "9b79f54f",
+    "displayName" : "Sales",
+    "layout" : [ {
+      "widget" : {
+        "name" : "923dbfd6",
+        "textbox_spec" : "SALES BY REGION"
+      },
+      "position" : {
+        "x" : 0,
+        "y" : 0,
+        "width" : 3,
+        "height" : 1
+      }
+    }, {
+      "widget" : {
+        "name" : "a1eea89f",
+        "textbox_spec" : "CUSTOMERS PER REGION"
+      },
+      "position" : {
+        "x" : 0,
+        "y" : 7,
+        "width" : 3,
+        "height" : 1
+      }
+    }, {
+      "widget" : {
+        "name" : "d162127b",
+        "queries" : [ {
+          "name" : "main_query",
+          "query" : {
+            "datasetName" : "02939fe8",
+            "fields" : [ {
+              "name" : "region",
+              "expression" : "`region`"
+            }, {
+              "name" : "sum(amount)",
+              "expression" : "SUM(`amount`)"
+            } ],
+            "disaggregated" : false
+          }
+        } ],
+        "spec" : {
+          "version" : 3,
+          "widgetType" : "bar",
+          "encodings" : {
+            "x" : {
+              "fieldName" : "region",
+              "scale" : {
+                "type" : "categorical"
+              },
+              "displayName" : "region"
+            },
+            "y" : {
+              "fieldName" : "sum(amount)",
+              "scale" : {
+                "type" : "quantitative"
+              },
+              "displayName" : "Sum of amount"
+            }
+          },
+          "frame" : {
+            "title" : "Sales by Region",
+            "showTitle" : true
+          },
+          "mark" : {
+            "colors" : [ "#FFAB00", "#FFAB00", "#00A972", "#FF3621", "#8BCAE7", "#AB4057", "#99DDB4", "#FCA4A1", "#919191", "#BF7080" ]
+          }
+        }
+      },
+      "position" : {
+        "x" : 0,
+        "y" : 1,
+        "width" : 3,
+        "height" : 6
+      }
+    }, {
+      "widget" : {
+        "name" : "ba208537",
+        "queries" : [ {
+          "name" : "main_query",
+          "query" : {
+            "datasetName" : "02939fe8",
+            "fields" : [ {
+              "name" : "region",
+              "expression" : "`region`"
+            }, {
+              "name" : "count(customer_id)",
+              "expression" : "COUNT(`customer_id`)"
+            } ],
+            "disaggregated" : false
+          }
+        } ],
+        "spec" : {
+          "version" : 3,
+          "widgetType" : "bar",
+          "encodings" : {
+            "x" : {
+              "fieldName" : "region",
+              "scale" : {
+                "type" : "categorical",
+                "sort" : {
+                  "by" : "y-reversed"
+                }
+              },
+              "displayName" : "region"
+            },
+            "y" : {
+              "fieldName" : "count(customer_id)",
+              "scale" : {
+                "type" : "quantitative"
+              },
+              "displayName" : "Count of customer_id"
+            }
+          },
+          "frame" : {
+            "title" : "Customers per region",
+            "showTitle" : true
+          }
+        }
+      },
+      "position" : {
+        "x" : 0,
+        "y" : 8,
+        "width" : 3,
+        "height" : 6
+      }
+    }, {
+      "widget" : {
+        "name" : "52fdfc09",
+        "queries" : [ {
+          "name" : "main_query",
+          "query" : {
+            "datasetName" : "02939fe8",
+            "fields" : [ {
+              "name" : "sum(amount)",
+              "expression" : "SUM(`amount`)"
+            } ],
+            "disaggregated" : false
+          }
+        } ],
+        "spec" : {
+          "version" : 2,
+          "widgetType" : "counter",
+          "encodings" : {
+            "value" : {
+              "fieldName" : "sum(amount)",
+              "displayName" : "Sum of amount"
+            }
+          },
+          "frame" : {
+            "title" : "Total Sales Amount",
+            "showTitle" : true
+          }
+        }
+      },
+      "position" : {
+        "x" : 3,
+        "y" : 0,
+        "width" : 3,
+        "height" : 7
+      }
+    }, {
+      "widget" : {
+        "name" : "d6b90440",
+        "queries" : [ {
+          "name" : "main_query",
+          "query" : {
+            "datasetName" : "02939fe8",
+            "fields" : [ {
+              "name" : "sum(amount)",
+              "expression" : "SUM(`amount`)"
+            }, {
+              "name" : "region",
+              "expression" : "`region`"
+            } ],
+            "disaggregated" : false
+          }
+        } ],
+        "spec" : {
+          "version" : 3,
+          "widgetType" : "pie",
+          "encodings" : {
+            "angle" : {
+              "fieldName" : "sum(amount)",
+              "scale" : {
+                "type" : "quantitative"
+              },
+              "displayName" : "Sum of amount"
+            },
+            "color" : {
+              "fieldName" : "region",
+              "scale" : {
+                "type" : "categorical"
+              },
+              "displayName" : "region"
+            },
+            "label" : {
+              "show" : true
+            }
+          },
+          "frame" : {
+            "title" : "Sales Distribution",
+            "showTitle" : true
+          }
+        }
+      },
+      "position" : {
+        "x" : 3,
+        "y" : 7,
+        "width" : 3,
+        "height" : 7
+      }
+    } ]
+  } ]
+}

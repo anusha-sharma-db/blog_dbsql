@@ -44,7 +44,7 @@ jobs:
 
       - name: Deploy and Run Bundle
         run: |
-          cd path/to/databricks/bundle
+          # cd path/to/databricks/bundle
           # Deploy the bundle
           databricks bundle deploy --target "$DATABRICKS_BUNDLE_TARGET"
           # Run the workflow (update name accordingly)

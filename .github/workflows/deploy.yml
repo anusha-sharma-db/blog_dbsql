@@ -8,21 +8,22 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-env:
-    DATABRICKS_OAUTH_CLIENT_ID: ${{ secrets.DATABRICKS_OAUTH_CLIENT_ID }}
-    DATABRICKS_OAUTH_CLIENT_SECRET: ${{ secrets.DATABRICKS_OAUTH_CLIENT_SECRET }}
-    # DATABRICKS_OAUTH_TENANT_ID: ${{ secrets.DATABRICKS_OAUTH_TENANT_ID }}
-    DATABRICKS_HOST: ${{ env.DEV_HOST_NAME }}
+    env:
+      DATABRICKS_OAUTH_CLIENT_ID: ${{ secrets.DATABRICKS_OAUTH_CLIENT_ID }}
+      DATABRICKS_OAUTH_CLIENT_SECRET: ${{ secrets.DATABRICKS_OAUTH_CLIENT_SECRET }}
+      # DATABRICKS_OAUTH_TENANT_ID: ${{ secrets.DATABRICKS_OAUTH_TENANT_ID }}
+      DATABRICKS_HOST: ${{ env.DEV_HOST_NAME }}
     
     steps:
-       - name: Checkout Code
-       - uses: actions/checkout@v3
-       - name: Set up Databricks CLI
-       - uses: databricks/setup-cli@main
+      - name: Checkout Code
+        uses: actions/checkout@v3
+        
+      - name: Set up Databricks CLI
+        uses: databricks/setup-cli@main
        
-       - name: Set Environment
-          #In GitHub Actions, github.ref is a built-in context variable that refers to the Git reference (branch, tag, or pull request) that triggered the workflow.
-          run: |
+      - name: Set Environment
+        # In GitHub Actions, github.ref is a built-in context variable that refers to the Git reference (branch, tag, or pull request) that triggered the workflow.
+        run: |
           if [[ "${{ github.ref }}" == "refs/heads/dev" ]]; then 
             echo "DATABRICKS_BUNDLE_TARGET=dev" >> $GITHUB_ENV
           elif [[ "${{ github.ref }}" == "refs/heads/test" ]]; then
@@ -31,8 +32,8 @@ env:
             echo "DATABRICKS_BUNDLE_TARGET=prod" >> $GITHUB_ENV
           fi
 
-        - name: Authenticate with Databricks using SPN OAuth
-          run: |
+      - name: Authenticate with Databricks using SPN OAuth
+        run: |
           databricks auth login \
             --client-id $DATABRICKS_OAUTH_CLIENT_ID \
             --client-secret $DATABRICKS_OAUTH_CLIENT_SECRET \
@@ -40,8 +41,8 @@ env:
             --host $DATABRICKS_HOST \
             --auth-type oauth-m2m
 
-        - name: Deploy and Run Bundle
-          run: |
+      - name: Deploy and Run Bundle
+        run: |
           cd path/to/databricks/bundle
           # Deploy the bundle
           databricks bundle deploy --target "$DATABRICKS_BUNDLE_TARGET"

@@ -103,7 +103,7 @@ jobs:
           DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN }}
           DATABRICKS_BUNDLE_TARGET: ${{ env.DATABRICKS_BUNDLE_TARGET }}
         run: |
-          cd path/to/databricks/bundle
+          # cd path/to/databricks/bundle
           databricks bundle deploy --target "$DATABRICKS_BUNDLE_TARGET"
 
       # Optional: Run a Databricks workflow after deploy

@@ -51,14 +51,14 @@ targets:
   prod:
     mode: production
     workspace:
-      host: https://adb-481963700905014.14.azuredatabricks.net
+      host: https://adb-4452579165360161.1.azuredatabricks.net/
       # We explicitly deploy to /Workspace/Users/naresh.tambekar@databricks.com to make sure we only have a single copy.
       root_path: /Workspace/Shared/.bundle/${bundle.name}/${bundle.target}
     variables:
-      warehouse_id: 545bc2045ac53c7c
+      warehouse_id: fb3a2dac0d2a2f30
       catalog: test_catalog
       schema: default
-      job_sp: 4c8db6b2-53d0-46a9-9d2d-748cf3271f9e
+      job_sp: b163b711-1612-4e16-bd36-8f0ce55c039b
     permissions:
       - user_name: naresh.tambekar@databricks.com
         level: CAN_MANAGE

@@ -33,13 +33,13 @@
 #             echo "DATABRICKS_BUNDLE_TARGET=prod" >> $GITHUB_ENV
 #           fi
 
-#       - name: Debug Branch Info
-#         run: |
-#           echo "github.ref: ${{ github.ref }}"
-#           echo "github.ref_name: ${{ github.ref_name }}"
-#           echo "github.head_ref: ${{ github.head_ref }}"
-#           echo ${{ secrets.DATABRICKS_HOST }}
-#           echo DATABRICKS_HOST
+      # - name: Debug Branch Info
+      #   run: |
+      #     echo "github.ref: ${{ github.ref }}"
+      #     echo "github.ref_name: ${{ github.ref_name }}"
+      #     echo "github.head_ref: ${{ github.head_ref }}"
+      #     echo ${{ secrets.DATABRICKS_HOST }}
+      #     echo DATABRICKS_HOST
 
 #       # - name: Authenticate with Databricks using SPN OAuth
 #       #   run: |

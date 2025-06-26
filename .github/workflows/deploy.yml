@@ -12,7 +12,7 @@ jobs:
       DATABRICKS_OAUTH_CLIENT_ID: ${{ secrets.DATABRICKS_OAUTH_CLIENT_ID }}
       DATABRICKS_OAUTH_CLIENT_SECRET: ${{ secrets.DATABRICKS_OAUTH_CLIENT_SECRET }}
       # DATABRICKS_OAUTH_TENANT_ID: ${{ secrets.DATABRICKS_OAUTH_TENANT_ID }}
-      DATABRICKS_HOST: ${{ vars.DEV_HOST_NAME }}
+      DATABRICKS_HOST: ${{ vars.DATABRICKS_HOST }}
       DATABRICKS_AUTH_TYPE: "oauth-m2m"
     
     steps:
@@ -32,6 +32,14 @@ jobs:
           elif [[ "${{ github.ref }}" == "refs/heads/prod" ]]; then
             echo "DATABRICKS_BUNDLE_TARGET=prod" >> $GITHUB_ENV
           fi
+
+      - name: Debug Branch Info
+        run: |
+          echo "github.ref: ${{ github.ref }}"
+          echo "github.ref_name: ${{ github.ref_name }}"
+          echo "github.head_ref: ${{ github.head_ref }}"
+          echo ${{ vars.DATABRICKS_HOST }}
+          echo $DATABRICKS_HOST
 
       # - name: Authenticate with Databricks using SPN OAuth
       #   run: |

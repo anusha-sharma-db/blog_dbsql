@@ -1,0 +1,65 @@
+# This is a Databricks asset bundle definition for dabs_cicd_demo.
+# See https://docs.databricks.com/dev-tools/bundles/index.html for documentation.
+bundle:
+  name: dabs_cicd_demo
+
+include:
+  - resources/*.yml
+
+# Variable declarations. These variables are assigned in the dev/prod targets below.
+variables:
+  warehouse_id:
+    description: The warehouse to use
+  catalog:
+    description: The catalog to use
+  schema:
+    description: The schema to use
+  job_sp:
+    description: SP to run job
+
+targets:
+  dev:
+    # The default target uses 'mode: development' to create a development copy.
+    # - Deployed resources get prefixed with '[dev my_user_name]'
+    # - Any job schedules and triggers are paused by default.
+    # See also https://docs.databricks.com/dev-tools/bundles/deployment-modes.html.
+    mode: development
+    default: true
+    workspace:
+      host: https://adb-1312687817070576.16.azuredatabricks.net/
+      root_path: ~/.bundle/${bundle.name}/${bundle.target}
+    variables:
+      warehouse_id: b718737eacef79bf
+      catalog: testing_dev
+      schema: default
+      job_sp: 8adb6a8d-3ed1-4adc-89f2-63471148e860
+
+  test:
+    mode: development
+    workspace:
+      host: https://adb-3216542821549145.5.azuredatabricks.net/
+      root_path: ~/.bundle/${bundle.name}/${bundle.target}
+    variables:
+      warehouse_id: c54edfd0175e80ec
+      catalog: test_catalog
+      schema: default
+      job_sp: 4c8db6b2-53d0-46a9-9d2d-748cf3271f9e
+    permissions:
+      - user_name: naresh.tambekar@databricks.com
+        level: CAN_MANAGE
+
+  prod:
+    mode: production
+    workspace:
+      host: https://adb-4452579165360161.1.azuredatabricks.net/
+      # We explicitly deploy to /Workspace/Users/naresh.tambekar@databricks.com to make sure we only have a single copy.
+      root_path: /Workspace/Shared/.bundle/${bundle.name}/${bundle.target}
+    variables:
+      warehouse_id: fb3a2dac0d2a2f30
+      catalog: test_catalog
+      schema: default
+      job_sp: b163b711-1612-4e16-bd36-8f0ce55c039b
+    permissions:
+      - user_name: naresh.tambekar@databricks.com
+        level: CAN_MANAGE
+

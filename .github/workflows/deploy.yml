@@ -113,5 +113,5 @@ jobs:
           DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN }}
           DATABRICKS_BUNDLE_TARGET: ${{ env.DATABRICKS_BUNDLE_TARGET }}
         run: |
-          cd path/to/databricks/bundle
+          # cd path/to/databricks/bundle
           databricks bundle run your-workflow-name --target "$DATABRICKS_BUNDLE_TARGET" --refresh-all

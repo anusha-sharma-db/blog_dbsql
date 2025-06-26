@@ -38,8 +38,8 @@ jobs:
           echo "github.ref: ${{ github.ref }}"
           echo "github.ref_name: ${{ github.ref_name }}"
           echo "github.head_ref: ${{ github.head_ref }}"
-          echo ${{ vars.DATABRICKS_HOST }}
           echo $DATABRICKS_HOST
+          echo DATABRICKS_HOST
 
       # - name: Authenticate with Databricks using SPN OAuth
       #   run: |

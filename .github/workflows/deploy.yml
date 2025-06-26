@@ -63,8 +63,8 @@ jobs:
           databricks bundle deploy --target ${{ steps.set-target.outputs.target }}
 
       # Optional: Run a Databricks workflow after deploy
-      - name: Run Databricks workflow
-        env:
-          DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN }}
-        run: |
-          databricks bundle run job_hls_genomics --target ${{ steps.set-target.outputs.target }} --refresh-all
+      # - name: Run Databricks workflow
+      #   env:
+      #     DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN }}
+      #   run: |
+      #     databricks bundle run job_hls_genomics --target ${{ steps.set-target.outputs.target }} --refresh-all

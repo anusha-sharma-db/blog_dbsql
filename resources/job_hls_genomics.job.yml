@@ -3,7 +3,7 @@ resources:
     job_hls_genomics:
       name: job_hls_genomics
       run_as:
-          service_principal_name: 8adb6a8d-3ed1-4adc-89f2-63471148e860
+          service_principal_name: ${var.job_sp}
       tasks:
         - task_key: load_demographics
           sql_task:

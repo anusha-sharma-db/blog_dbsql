@@ -14,6 +14,8 @@ variables:
     description: The catalog to use
   schema:
     description: The schema to use
+  job_sp:
+    description: SP to run job
 
 targets:
   dev:
@@ -30,16 +32,18 @@ targets:
       warehouse_id: b718737eacef79bf
       catalog: testing_dev
       schema: default
+      job_sp: 8adb6a8d-3ed1-4adc-89f2-63471148e860
 
   test:
     mode: development
     workspace:
       host: https://adb-3216542821549145.5.azuredatabricks.net/
-      root_path: /Workspace/Shared/.bundle/${bundle.name}/${bundle.target}
+      root_path: ~/.bundle/${bundle.name}/${bundle.target}
     variables:
-      warehouse_id: ea3bb123fe9cab21
+      warehouse_id: c54edfd0175e80ec
       catalog: test_catalog
       schema: default
+      job_sp: 4c8db6b2-53d0-46a9-9d2d-748cf3271f9e
     permissions:
       - user_name: naresh.tambekar@databricks.com
         level: CAN_MANAGE
@@ -54,6 +58,7 @@ targets:
       warehouse_id: 545bc2045ac53c7c
       catalog: test_catalog
       schema: default
+      job_sp: 4c8db6b2-53d0-46a9-9d2d-748cf3271f9e
     permissions:
       - user_name: naresh.tambekar@databricks.com
         level: CAN_MANAGE

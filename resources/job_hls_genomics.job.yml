@@ -1,0 +1,43 @@
+resources:
+  jobs:
+    job_hls_genomics:
+      name: job_hls_genomics
+      run_as:
+          service_principal_name: 8adb6a8d-3ed1-4adc-89f2-63471148e860
+      tasks:
+        - task_key: load_demographics
+          sql_task:
+            file:
+              path: ../src/sql/demographics.sql
+            warehouse_id: ${var.warehouse_id}
+        - task_key: load_diagnoses
+          sql_task:
+            file:
+              path: ../src/sql/diagnoses.sql
+            warehouse_id: ${var.warehouse_id}
+        - task_key: load_exposures
+          sql_task:
+            file:
+              path: ../src/sql/exposures.sql
+            warehouse_id: ${var.warehouse_id}
+        - task_key: load_expression_profiles_unmap
+          sql_task:
+            file:
+              path: ../src/sql/expression_profiles_umap.sql
+            warehouse_id: ${var.warehouse_id}
+        - task_key: refresh_dashboard
+          depends_on:
+            - task_key: load_demographics
+            - task_key: load_diagnoses
+            - task_key: load_exposures
+            - task_key: load_expression_profiles_unmap
+          dashboard_task:
+            subscription: {}
+            warehouse_id: ${var.warehouse_id}
+            dashboard_id: ${resources.dashboards.aibi_dashboard.id}
+      queue:
+        enabled: true
+
+      permissions:
+        - level: CAN_MANAGE
+          user_name: naresh.tambekar@databricks.com

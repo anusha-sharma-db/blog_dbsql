@@ -32,10 +32,9 @@ targets:
       schema: default
 
   test:
-    mode: staging
+    mode: development
     workspace:
-      host: https://adb-90373837724509.9.azuredatabricks.net
-      # We explicitly deploy to /Workspace/Users/naresh.tambekar@databricks.com to make sure we only have a single copy.
+      host: https://adb-3216542821549145.5.azuredatabricks.net/
       root_path: /Workspace/Shared/.bundle/${bundle.name}/${bundle.target}
     variables:
       warehouse_id: ea3bb123fe9cab21

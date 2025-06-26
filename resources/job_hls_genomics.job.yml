@@ -8,22 +8,22 @@ resources:
         - task_key: load_demographics
           sql_task:
             file:
-              path: ../sql/demographics.sql
+              path: ../src/sql/demographics.sql
             warehouse_id: ${var.warehouse_id}
         - task_key: load_diagnoses
           sql_task:
             file:
-              path: ../sql/diagnoses.sql
+              path: ../src/sql/diagnoses.sql
             warehouse_id: ${var.warehouse_id}
         - task_key: load_exposures
           sql_task:
             file:
-              path: ../sql/exposures.sql
+              path: ../src/sql/exposures.sql
             warehouse_id: ${var.warehouse_id}
         - task_key: load_expression_profiles_unmap
           sql_task:
             file:
-              path: ../sql/expression_profiles_umap.sql
+              path: ../src/sql/expression_profiles_umap.sql
             warehouse_id: ${var.warehouse_id}
         - task_key: refresh_dashboard
           depends_on:

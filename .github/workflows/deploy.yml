@@ -12,7 +12,7 @@ jobs:
       DATABRICKS_OAUTH_CLIENT_ID: ${{ secrets.DATABRICKS_OAUTH_CLIENT_ID }}
       DATABRICKS_OAUTH_CLIENT_SECRET: ${{ secrets.DATABRICKS_OAUTH_CLIENT_SECRET }}
       # DATABRICKS_OAUTH_TENANT_ID: ${{ secrets.DATABRICKS_OAUTH_TENANT_ID }}
-      DATABRICKS_HOST: ${{ env.DEV_HOST_NAME }}
+      DATABRICKS_HOST: ${{ vars.DEV_HOST_NAME }}
     
     steps:
       - name: Checkout Code

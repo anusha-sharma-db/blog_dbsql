@@ -12,7 +12,7 @@ jobs:
       DATABRICKS_OAUTH_CLIENT_ID: ${{ secrets.DATABRICKS_OAUTH_CLIENT_ID }}
       DATABRICKS_OAUTH_CLIENT_SECRET: ${{ secrets.DATABRICKS_OAUTH_CLIENT_SECRET }}
       # DATABRICKS_OAUTH_TENANT_ID: ${{ secrets.DATABRICKS_OAUTH_TENANT_ID }}
-      DATABRICKS_HOST: $DATABRICKS_HOST
+      DATABRICKS_HOST: $DEV_HOST_NAME
       DATABRICKS_AUTH_TYPE: "oauth-m2m"
     
     steps:
@@ -38,7 +38,7 @@ jobs:
           echo "github.ref: ${{ github.ref }}"
           echo "github.ref_name: ${{ github.ref_name }}"
           echo "github.head_ref: ${{ github.head_ref }}"
-          echo $DATABRICKS_HOST
+          echo $DEV_HOST_NAME
           echo DATABRICKS_HOST
 
       # - name: Authenticate with Databricks using SPN OAuth

@@ -8,12 +8,12 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    env:
-      DATABRICKS_OAUTH_CLIENT_ID: ${{ secrets.DATABRICKS_OAUTH_CLIENT_ID }}
-      DATABRICKS_OAUTH_CLIENT_SECRET: ${{ secrets.DATABRICKS_OAUTH_CLIENT_SECRET }}
-      # DATABRICKS_OAUTH_TENANT_ID: ${{ secrets.DATABRICKS_OAUTH_TENANT_ID }}
-      DATABRICKS_HOST: $DEV_HOST_NAME
-      DATABRICKS_AUTH_TYPE: "oauth-m2m"
+    # env:
+    #   DATABRICKS_OAUTH_CLIENT_ID: ${{ secrets.DATABRICKS_OAUTH_CLIENT_ID }}
+    #   DATABRICKS_OAUTH_CLIENT_SECRET: ${{ secrets.DATABRICKS_OAUTH_CLIENT_SECRET }}
+    #   # DATABRICKS_OAUTH_TENANT_ID: ${{ secrets.DATABRICKS_OAUTH_TENANT_ID }}
+    #   DATABRICKS_HOST: $DEV_HOST_NAME
+    #   DATABRICKS_AUTH_TYPE: "oauth-m2m"
     
     steps:
       - name: Checkout Code
@@ -38,7 +38,7 @@ jobs:
           echo "github.ref: ${{ github.ref }}"
           echo "github.ref_name: ${{ github.ref_name }}"
           echo "github.head_ref: ${{ github.head_ref }}"
-          echo $DEV_HOST_NAME
+          echo ${{ secrets.DATABRICKS_HOST }}
           echo DATABRICKS_HOST
 
       # - name: Authenticate with Databricks using SPN OAuth
@@ -54,8 +54,12 @@ jobs:
         run: |
           # cd path/to/databricks/bundle
           # Deploy the bundle
-          databricks bundle deploy --target "$DATABRICKS_BUNDLE_TARGET"
-          # Run the workflow (update name accordingly)
-          databricks bundle run your-workflow-name --target "$DATABRICKS_BUNDLE_TARGET" --refresh-all 2>&1 | tee output.log
-          # Run the dashboard refresh (update name accordingly)
-          databricks bundle run refresh_dashboard_job --target "$DATABRICKS_BUNDLE_TARGET" --refresh-all 2>&1 | tee output.log
+          env:
+          DATABRICKS_HOST: ${{ secrets.DATABRICKS_HOST }}
+          DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN }}
+          run: databricks bundle deploy --target dev
+          # databricks bundle deploy --target "$DATABRICKS_BUNDLE_TARGET"
+          # # Run the workflow (update name accordingly)
+          # databricks bundle run your-workflow-name --target "$DATABRICKS_BUNDLE_TARGET" --refresh-all 2>&1 | tee output.log
+          # # Run the dashboard refresh (update name accordingly)
+          # databricks bundle run refresh_dashboard_job --target "$DATABRICKS_BUNDLE_TARGET" --refresh-all 2>&1 | tee output.log

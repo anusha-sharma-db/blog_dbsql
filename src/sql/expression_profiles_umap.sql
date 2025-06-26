@@ -1,0 +1,2 @@
+DELETE FROM dev.dbdemos_aibi_hls_genomics.expression_profiles_umap;
+INSERT INTO dev.dbdemos_aibi_hls_genomics.expression_profiles_umap SELECT * FROM dev.dbdemos_aibi_hls_genomics.expression_profiles_umap_stg;

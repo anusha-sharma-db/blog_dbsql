@@ -3,7 +3,7 @@ resources:
     job_hls_genomics:
       name: job_hls_genomics
       run_as:
-          service_principal_name: ${vars.job_sp}
+          service_principal_name: ${var.job_sp}
       tasks:
         - task_key: load_demographics
           sql_task:

@@ -55,6 +55,10 @@ jobs:
       - name: Deploy Bundle
         env:
           DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN }}
+          DATABRICKS_CLIENT_ID: ${{ secrets.DATABRICKS_CLIENT_ID }}
+          DATABRICKS_CLIENT_SECRET: ${{ secrets.DATABRICKS_CLIENT_SECRET }}
+          DATABRICKS_TENANT_ID: ${{ secrets.DATABRICKS_TENANT_ID }}
+          DATABRICKS_AUTH_TYPE: oauth-m2m
         run: |
           databricks bundle deploy --target ${{ steps.set-target.outputs.target }}
 

@@ -24,12 +24,12 @@ targets:
     mode: development
     default: true
     workspace:
-      host: ${env.HOST_NAME}
+      host: ${env.DEV_HOST_NAME}
       root_path: ~/.bundle/${bundle.name}/${bundle.target}
     variables:
-      warehouse_id: d89dfe85dba1a59f
-      catalog: dev
-      schema: ${workspace.current_user.short_name}
+      warehouse_id: b718737eacef79bf
+      catalog: testing_dev
+      schema: default
 
   test:
     mode: staging

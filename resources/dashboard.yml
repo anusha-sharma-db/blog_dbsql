@@ -2,5 +2,5 @@ resources:
   dashboards:
     aibi_dashboard:
       display_name: "AIBI - Patient Genomics Review for Precision Oncology"
-      file_path: ../src/AIBI - Patient Genomics Review for Precision Oncology.lvdash.json
+      file_path: ../src/dashboards/AIBI - Patient Genomics Review for Precision Oncology.lvdash.json
       warehouse_id: ${var.warehouse_id}

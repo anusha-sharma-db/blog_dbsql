@@ -45,8 +45,9 @@ targets:
       schema: default
       job_sp: 4c8db6b2-53d0-46a9-9d2d-748cf3271f9e
     permissions:
-      - user_name: naresh.tambekar@databricks.com
-        level: CAN_MANAGE
+      - group_name: users # Your group name here, e.g., 'users', 'admins', etc.
+        level: CAN_RUN # This permission allows all users in the 'users' group to run the jobs defined in this bundle. CAN_RUN, CAN_MANAGE, CAN_VIEW, or CAN_EDIT can be used
+
 
   prod:
     mode: production
@@ -60,6 +61,7 @@ targets:
       schema: default
       job_sp: b163b711-1612-4e16-bd36-8f0ce55c039b
     permissions:
-      - user_name: naresh.tambekar@databricks.com
-        level: CAN_MANAGE
+      - group_name: users # Your group name here, e.g., 'users', 'admins', etc.
+        level: CAN_RUN # This permission allows all users in the 'users' group to run the 
+
 

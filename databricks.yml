@@ -6,6 +6,7 @@ bundle:
 
 
 include:
+  # Include all resources in the 'resources' directory.
   - resources/*.yml
 
   # # Optional! If not choosing the above method, you can include specific resources for jobs, dashboards, and SQL queries.

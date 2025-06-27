@@ -36,7 +36,9 @@ targets:
       host: https://adb-1312687817070576.16.azuredatabricks.net/
       root_path: ~/.bundle/${bundle.name}/${bundle.target}
     variables:
-      warehouse_id: b718737eacef79bf
+      warehouse_id: 
+        lookup:
+          warehouse: "Serverless Starter Warehouse"
       catalog: testing_dev
       schema: default
       job_sp: 8adb6a8d-3ed1-4adc-89f2-63471148e860
@@ -47,7 +49,9 @@ targets:
       host: https://adb-3216542821549145.5.azuredatabricks.net/
       root_path: ~/.bundle/${bundle.name}/${bundle.target}
     variables:
-      warehouse_id: c54edfd0175e80ec
+      warehouse_id: 
+        lookup:
+          warehouse: "Serverless Starter Warehouse"
       catalog: test_catalog
       schema: default
       job_sp: 4c8db6b2-53d0-46a9-9d2d-748cf3271f9e
@@ -60,10 +64,11 @@ targets:
     mode: production
     workspace:
       host: https://adb-4452579165360161.1.azuredatabricks.net/
-      # We explicitly deploy to /Workspace/Users/naresh.tambekar@databricks.com to make sure we only have a single copy.
       root_path: /Workspace/Shared/.bundle/${bundle.name}/${bundle.target}
     variables:
-      warehouse_id: fb3a2dac0d2a2f30
+      warehouse_id: 
+        lookup:
+          warehouse: "Serverless Starter Warehouse"
       catalog: test_catalog
       schema: default
       job_sp: b163b711-1612-4e16-bd36-8f0ce55c039b

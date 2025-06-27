@@ -1,7 +1,9 @@
 # This is a Databricks asset bundle definition for dabs_cicd_demo.
 # See https://docs.databricks.com/dev-tools/bundles/index.html for documentation.
 bundle:
-  name: dabs_cicd_demo
+  name: dabs_cicd_demo # The name of the bundle, used to create a directory in the workspace.
+  description: "Databricks Asset Bundle for CICD Demo" # A description of the bundle
+
 
 include:
   - resources/*.yml

@@ -72,4 +72,4 @@ jobs:
           DATABRICKS_AUTH_TYPE: oauth-m2m
         run: |
           # databricks bundle run job_hls_genomics --target ${{ steps.set-target.outputs.target }} --refresh-all
-          databricks bundle run aibi_dashboard --target ${{ steps.set-target.outputs.target }} --refresh-all # Refresh dashboards after deployment
+          databricks bundle run "AIBI - Patient Genomics Review for Precision Oncology" --target ${{ steps.set-target.outputs.target }} --refresh-all # Refresh dashboards after deployment
